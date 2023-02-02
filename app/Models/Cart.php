@@ -10,8 +10,6 @@ class Cart extends Model
     use HasFactory;
 
     public function items() {
-        return $this->belongsToMany(Item::class, 'cart_item')
-            ->withTrashed()
-            ->withTimestamps();
+        return $this->belongsToMany(Item::class, 'cart_item')->withTimestamps();
     }
 }
