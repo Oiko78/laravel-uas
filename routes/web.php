@@ -16,8 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', fn () => redirect(route('items.index')));
-Route::get('/success', fn () => view('shared.success'));
+Route::get('/', fn () => redirect(route('items.index')))->name('home');
 
 Route::controller(UserController::class)->group(function () {
     Route::middleware('guest')->group(function () {
@@ -31,9 +30,12 @@ Route::controller(UserController::class)->group(function () {
         });
     });
     Route::middleware('auth')->group(function () {
-        Route::prefix('/profile')->group(function () {
-            Route::get('', 'show')->name('users.show');
-            Route::post('', 'update')->name('users.update');
+        Route::prefix('/users')->group(function () {
+            Route::get('', 'index')->name('users.index')->middleware('admin');
+            Route::get('{user}', 'show')->name('users.show');
+            Route::post('{user}', 'update')->name('users.update');
+            Route::put('{user}', 'updateRole')->name('users.update.role');
+            Route::delete('{user}', 'destroy')->name('users.destroy');
         });
 
         Route::post('/logout', 'logout')->name('logout');
@@ -56,11 +58,4 @@ Route::controller(ItemController::class)
     ->group(function () {
         Route::get('', 'index')->name('items.index');
         Route::get('{item}', 'show')->name('items.show');
-    });
-
-Route::controller(UserController::class)
-    ->middleware('auth')
-    // ->middleware('admin')
-    ->group(function () {
-        Route::get('/users', 'index')->name('users.index');
     });

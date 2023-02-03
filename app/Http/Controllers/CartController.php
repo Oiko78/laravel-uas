@@ -47,7 +47,11 @@ class CartController extends Controller {
      */
     public function destroy(Request $request) {
         $cart = auth()->user()->cart;
+
+        if ($cart->items->count() === 0)
+            return redirect(route('items.index'));
+
         $cart->items()->sync([]);
-        return redirect('/success');
+        return view('shared.success');
     }
 }

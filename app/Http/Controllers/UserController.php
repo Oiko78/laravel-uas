@@ -16,7 +16,7 @@ class UserController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        //
+        return view('users.index', ['users' => User::all()]);
     }
 
     /**
@@ -64,7 +64,7 @@ class UserController extends Controller {
      */
     public function show(User $user) {
         return view('users.show', [
-            'user', auth()->user()
+            'user' => auth()->user()
         ]);
     }
 
@@ -133,7 +133,40 @@ class UserController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, User $user) {
-        //
+        $fields = $request->validate([
+            'first_name' => ['required', 'alpha_num', 'max:25'],
+            'last_name' => ['required', 'alpha_num', 'max:25'],
+            'email' => ['required', 'email', 'unique:users,email,' . $user->id],
+            'role_id' => ['required', Rule::in([1, 2])],
+            'gender_id' => ['required'],
+            'display_picture' => ['image'],
+            'password' => ['required', Password::min(8)->numbers(), 'confirmed']
+        ]);
+
+        $fields['password'] = Hash::make($fields['password']);
+
+        if ($request->hasFile('display_picture')) {
+            $fields['display_picture'] = $request->file('display_picture')->store('images', 'public');
+        }
+
+        $user->update($fields);
+        return view('shared.saved');
+    }
+
+    /**
+     * Update user's role
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function updateRole(Request $request, User $user) {
+        $fields = $request->validate([
+            'role_id' => ['required', Rule::in([1, 2])],
+        ]);
+
+        $user->update($fields);
+        return back();
     }
 
     /**
@@ -143,6 +176,7 @@ class UserController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy(User $user) {
-        //
+        $user->delete();
+        return back();
     }
 }

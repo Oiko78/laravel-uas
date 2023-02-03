@@ -1,7 +1,7 @@
 @extends('shared.layout')
 
+@section('title', 'Cart')
 @section('main')
-
     @include('partials.navbar')
 
     <div class="container">
@@ -15,8 +15,8 @@
             <table class="w-100 mb-0 table bg-white align-middle">
                 <thead class="bg-light">
                     <tr>
-                        <th width="60%">Item</th>
-                        <th width="20%">Price</th>
+                        <th width="50%">Item</th>
+                        <th width="30%">Price</th>
                         <th width="20%">Actions</th>
                     </tr>
                 </thead>
@@ -26,7 +26,7 @@
                             <td>
                                 <div class="d-flex align-items-center">
                                     <img
-                                        class="rounded-circle" src={{ asset("storage/{$item->image}") }} alt=""
+                                        class="rounded-circle" src={{ asset('storage/images/item.jpg') }} alt=""
                                         style="width: 45px; height: 45px" />
                                     <div class="ms-3">
                                         <p class="fw-bold mb-0">{{ $item->name }}</p>
@@ -37,13 +37,13 @@
                                 <p class="fw-normal mb-0">IDR {{ $item->price }}</p>
                             </td>
                             <td>
-                                <form id="{{ $item->id }}" action="/cart" method="POST">
+                                <form action="{{ route('cart.update') }}" method="POST">
                                     @csrf
                                     @method('DELETE')
 
                                     <input class="form-control" name="item_id" type="text" value="{{ $item->id }}"
                                         hidden>
-                                    <button class="btn btn-sm btn-danger w-100" form="{{ $item->id }}" type="submit">
+                                    <button class="btn btn-sm btn-danger w-100" type="submit">
                                         Delete
                                     </button>
                                 </form>
@@ -52,10 +52,12 @@
                     @endforeach
                     <tr>
                         <td></td>
-                        <td class="d-flex gap-3">
-                            <p class="fw-bold mb-0">Grand Total</p>
-                            <p class="fw-normal mb-0">IDR
-                                {{ auth()->user()->cart->items->sum(fn($item) => $item->price) }}
+                        <td class="">
+                            <p class="fw-bold m-0">
+                                Total
+                                <span class="ms-2 fw-normal">
+                                    {{ \App\Models\Item::format(auth()->user()->cart->items->sum(fn($item) => $item->price)) }}
+                                </span>
                             </p>
                         </td>
                         <td>

@@ -16,7 +16,7 @@
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <h5 class="fw-bolder">{{ $item->name }}</h5>
-                                    {{ $item->price }}
+                                    {{ \App\Models\Item::format($item->price) }}
                                 </div>
                             </div>
                             <div class="card-footer border-top-0 bg-transparent p-4 pt-0">
@@ -29,7 +29,8 @@
                                             <input class="form-control visually-hidden" name="item_id" type="text"
                                                 value="{{ $item->id }}">
                                             <button class="btn btn-outline-danger mt-auto" type="submit">
-                                                Remove from cart
+                                                <i class="bi-trash-fill me-1"></i>
+                                                Remove
                                             </button>
                                         </form>
                                     @else
@@ -39,6 +40,7 @@
                                             <input class="form-control visually-hidden" name="item_id" type="text"
                                                 value="{{ $item->id }}">
                                             <button class="btn btn-outline-dark mt-auto" type="submit">
+                                                <i class="bi-cart-fill me-1"></i>
                                                 Add to Cart
                                             </button>
                                         </form>

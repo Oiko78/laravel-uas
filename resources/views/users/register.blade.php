@@ -91,7 +91,10 @@
                 <div class="col">
                     <div>
                         <label class="form-label" for="inpDisplayPicture">Display Picture</label>
-                        <input id="inpDisplayPicture" name="display_picture" type="file" @class(['form-control', 'is-invalid' => $errors->get('email')])>
+                        <input id="inpDisplayPicture" name="display_picture" type="file" @class([
+                            'form-control',
+                            'is-invalid' => $errors->get('display_picture'),
+                        ])>
                         @error('display_picture')
                             <span class="invalid-feedback">{{ $message }}</span>
                         @enderror
