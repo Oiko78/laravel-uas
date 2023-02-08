@@ -145,7 +145,7 @@
                     <div class="d-flex mb-2">
                         <button class="btn btn-outline-dark flex-shrink-0" type="submit">
                             <i class="bi-check-circle me-1"></i>
-                            Save
+                            @lang('globul.user_submit')
                         </button>
                     </div>
                 </form>

@@ -2,6 +2,7 @@
 
 @section('title', 'Login')
 @section('main')
+    @include('partials.navbar')
     @include('partials.header')
 
     <section class="w-100 d-flex justify-content-center mt-auto p-4">
@@ -30,13 +31,13 @@
                 @enderror
             </div>
 
-            <button class="btn btn-dark btn-block w-100 mb-4" type="submit">Sign in</button>
+            <button class="btn btn-dark btn-block w-100 mb-4" type="submit">@lang('globul.login_submit')</button>
 
             <div class="text-center">
                 <p>
-                    Don't have an account?
+                    @lang('globul.login_account')
                     <a class="text-decoration-underline text-dark fw-bold" href="/register">
-                        click here to sign up
+                        @lang('globul.login_register')
                     </a>
                 </p>
             </div>

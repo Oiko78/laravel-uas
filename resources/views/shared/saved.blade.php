@@ -6,8 +6,8 @@
 
     <div class="container">
         <div class="d-flex flex-column text-center">
-            <p>Saved!</p>
-            <a href="{{ route('items.index') }}">Click here to go back</a>
+            <p>@lang('globul.saved_title')</p>
+            <a href="{{ route('items.index') }}">@lang('globul.saved_redirect')</a>
         </div>
     </div>
 

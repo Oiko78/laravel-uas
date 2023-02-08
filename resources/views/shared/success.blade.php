@@ -6,9 +6,9 @@
 
     <div class="container">
         <div class="d-flex flex-column text-center">
-            <p>Success</p>
-            <p>We will contact you 1x24 hours</p>
-            <a href="{{ route('items.index') }}">Click here to go back</a>
+            <p>@lang('globul.success_title')</p>
+            <p>@lang('globul.success_desc')</p>
+            <a href="{{ route('items.index') }}">@lang('globul.success_redirect')</a>
         </div>
     </div>
 

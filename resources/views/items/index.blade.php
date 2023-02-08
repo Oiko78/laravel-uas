@@ -30,7 +30,7 @@
                                                 value="{{ $item->id }}">
                                             <button class="btn btn-outline-danger mt-auto" type="submit">
                                                 <i class="bi-trash-fill me-1"></i>
-                                                Remove
+                                                @lang('globul.items_remove')
                                             </button>
                                         </form>
                                     @else
@@ -41,7 +41,7 @@
                                                 value="{{ $item->id }}">
                                             <button class="btn btn-outline-dark mt-auto" type="submit">
                                                 <i class="bi-cart-fill me-1"></i>
-                                                Add to Cart
+                                                @lang('globul.items_add')
                                             </button>
                                         </form>
                                     @endif

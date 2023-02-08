@@ -6,17 +6,17 @@
 
     <div class="container">
         <div class="d-flex justify-content-between flex-md-nowrap align-items-center border-bottom mb-3 flex-wrap pt-3 pb-2">
-            <h1 class="h2">Your Cart</h1>
+            <h1 class="h2">@lang('globul.cart_title')</h1>
         </div>
 
         @if (count(auth()->user()->cart->items) == 0)
-            <p style="padding: 0 1rem;">You have no products in cart!</p>
+            <p style="padding: 0 1rem;">@lang('globul.cart_empty')</p>
         @else
             <table class="w-100 mb-0 table bg-white align-middle">
                 <thead class="bg-light">
                     <tr>
                         <th width="50%">Item</th>
-                        <th width="30%">Price</th>
+                        <th width="30%">@lang('globul.cart_price')</th>
                         <th width="20%">Actions</th>
                     </tr>
                 </thead>
@@ -34,7 +34,7 @@
                                 </div>
                             </td>
                             <td>
-                                <p class="fw-normal mb-0">IDR {{ $item->price }}</p>
+                                <p class="fw-normal mb-0">{{ \App\Models\Item::format($item->price) }}</p>
                             </td>
                             <td>
                                 <form action="{{ route('cart.update') }}" method="POST">
@@ -44,7 +44,7 @@
                                     <input class="form-control" name="item_id" type="text" value="{{ $item->id }}"
                                         hidden>
                                     <button class="btn btn-sm btn-danger w-100" type="submit">
-                                        Delete
+                                        @lang('globul.cart_remove')
                                     </button>
                                 </form>
                             </td>

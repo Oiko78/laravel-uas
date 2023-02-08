@@ -1,0 +1,32 @@
+<?php
+
+return [
+    'header_title' => 'E-Grocery Hebat',
+    'header_subtitle' => 'belanja kapanpun dimanapun',
+    'navbar_language' => 'Bahasa',
+    'navbar_login' => 'Masuk',
+    'navbar_logout' => 'Keluar',
+    'navbar_register' => 'Daftar',
+    'navbar_home' => 'Beranda',
+    'navbar_cart' => 'Keranjang',
+    'login_submit' => 'Masuk',
+    'login_account' => 'Belum memiliki akun?',
+    'login_register' => 'klik disini untuk daftar',
+    'login_error' => 'Email / Password salah. Mohon cek kembali.',
+    'register_submit' => 'Daftar',
+    'register_account' => 'Sudah memiliki akun?',
+    'register_login' => 'klik disini untuk masuk',
+    'items_add' => 'Tambah',
+    'items_remove' => 'Hapus',
+    'users_remove' => 'Hapus',
+    'user_submit' => 'Simpan',
+    'saved_title' => 'Tersimpan!',
+    'saved_redirect' => 'Klik disini untuk kembali',
+    'success_title' => 'Berhasil!',
+    'success_desc' => 'Kami akan menghubungi anda dalam kurun waktu 1x24 jam',
+    'success_redirect' => 'Klik disini untuk kembali',
+    'cart_title' => 'Keranjang anda',
+    'cart_empty' => 'Keranjang anda kosong!',
+    'cart_price' => 'Harga',
+    'cart_remove' => 'Hapus'
+];

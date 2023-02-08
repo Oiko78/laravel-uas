@@ -11,7 +11,7 @@
                     <img class="card-img-top mb-md-0 mb-5" src="{{ asset('storage/images/item.jpg') }}" alt="..." />
                 </div>
                 <div class="col-md-6">
-                    <h1 class="display-5 fw-bolder">Shop item template</h1>
+                    <h1 class="display-5 fw-bolder">{{ $item->name }}</h1>
                     <div class="fs-5 mb-5">
                         <span>{{ \App\Models\Item::format($item->price) }}</span>
                     </div>
@@ -26,7 +26,7 @@
                                     value="{{ $item->id }}">
                                 <button class="btn btn-outline-danger flex-shrink-0" type="submit">
                                     <i class="bi-trash-fill me-1"></i>
-                                    Remove
+                                    @lang('globul.items_remove')
                                 </button>
                             </form>
                         @else
@@ -36,7 +36,7 @@
                                     value="{{ $item->id }}">
                                 <button class="btn btn-outline-dark flex-shrink-0" type="submit">
                                     <i class="bi-cart-fill me-1"></i>
-                                    Add to cart
+                                    @lang('globul.items_add')
                                 </button>
                             </form>
                         @endif

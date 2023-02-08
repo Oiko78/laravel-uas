@@ -43,7 +43,7 @@
 
                                     <button class="btn btn-outline-danger flex-shrink-0" type="submit">
                                         <i class="bi-trash-fill me-1"></i>
-                                        Remove
+                                        @lang('globul.users_remove')
                                     </button>
                                 </form>
                                 <form action="{{ route('users.update.role', $user->id) }}" method="POST">

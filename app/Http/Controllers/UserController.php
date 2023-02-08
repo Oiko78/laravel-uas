@@ -6,6 +6,7 @@ use App\Models\Cart;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Lang;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Password;
 
@@ -95,8 +96,8 @@ class UserController extends Controller {
         }
 
         return back()->withErrors([
-            'email' => 'Wrong email / password. Please check again.',
-            'password' => 'Wrong email / password. Please check again.'
+            'email' => Lang::get('globul.login_error'),
+            'password' => Lang::get('globul.login_error')
         ]);
     }
 
